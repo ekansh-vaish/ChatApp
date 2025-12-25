@@ -1,22 +1,37 @@
 const { GoogleGenAI } = require("@google/genai");
-const ai = new GoogleGenAI({apiKey:process.env.ChatBot_Key});
 
+const ai = new GoogleGenAI({
+  apiKey: process.env.GEMINI_API_KEY, // ✅ correct env var
+});
 
+module.exports.ChatBotAI = async (req, res) => {
+  try {
+    const { prompt } = req.body;
 
-module.exports.ChatBotAI = async(req,res,next) =>
-{
-try {
-  const {prompt} = req.body;
-const response = await ai.models.generateContent({
-  model : "gemini-2.5-flash",
-  contents : prompt,
-})
+    if (!prompt) {
+      return res.status(400).json({ success: false, message: "Prompt required" });
+    }
 
-res.json({success : true,answer : response.text});
+    const response = await ai.models.generateContent({
+      model: "gemini-1.5-flash",
+      contents: [
+        {
+          role: "user",
+          parts: [{ text: prompt }],
+        },
+      ],
+    });
 
-} 
-catch (error) {
+    res.json({
+      success: true,
+      answer: response.candidates[0].content.parts[0].text,
+    });
+  } catch (error) {
+    console.error("GEMINI ERROR 👉", error.message);
 
-res.status(500).json("error",error)
-}
-}
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    });
+  }
+};
