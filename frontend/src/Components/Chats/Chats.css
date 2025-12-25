@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.main-chat-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #fdfdfd, #e6fff0);
+}
+
+.chat-area {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Chat Bubble */
+.chat-bubble {
+  width: 500px; /* fixed width */
+  padding: 15px 20px;
+  border-radius: 18px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+  animation: fadeIn 0.3s ease-in-out;
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+}
+
+.chat-bubble:hover {
+  transform: scale(1.02);
+}
+
+.right-msg {
+  margin-left: auto;
+  background: linear-gradient(135deg, #ffffff, #f1f1f1);
+  color: rgb(4, 4, 4);
+}
+
+.left-msg {
+  margin-right: auto;
+  background: linear-gradient(135deg, #ffffff, #f1f1f1);
+  border: 1px solid #ddd;
+}
+
+/* Sender Info */
+.sender-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.bubble-text {
+  font-size: 25px;
+  line-height: 1.5;
+  color: inherit;
+}
+
+/* Avatar + Name Row */
+.chat-bubble img {
+  border-radius: 50%;
+  border: 2px solid #2196f3;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Buttons */
+.chat-area button {
+  height: 30px;
+  padding: 0 15px;
+  border-radius: 20px;
+  margin: 5px;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+.chat-area button:hover {
+  transform: scale(1.05);
+}
+
+/* Chat Form */
+.chat-form {
+  display: flex;
+  padding: 15px;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.chat-input {
+  flex: 1;
+  height: 50px;
+  padding: 0 20px;
+  border-radius: 25px;
+  border: 2px solid #2196f3;
+  outline: none;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.chat-input:focus {
+  border-color: #0b7ad1;
+  box-shadow: 0 0 8px rgba(33, 150, 243, 0.3);
+}
+
+.send-btn {
+  width: 100px;
+  margin-left: 10px;
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.send-btn:hover {
+  background: #0b7ad1;
+  transform: scale(1.05);
+}
+.btnOne
+{
+border-radius: 50%;  
+color: black
+}
+
+/* Smooth Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .chat-bubble {
+    width: 95%; /* still fixed but smaller on mobile */
+    font-size: 14px;
+  }
+
+  .chat-input {
+    height: 45px;
+    font-size: 14px;
+  }
+
+  .send-btn {
+    width: 80px;
+    font-size: 14px;
+  }
+}
