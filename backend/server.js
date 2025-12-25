@@ -12,7 +12,7 @@ const {MongoStore} = require("connect-mongo");
 
 app.use(
   cors({
-    origin: "https://aichatapp-roan.vercel.app",
+    origin: "https://chat-app-6yq2.vercel.app",
     credentials: true,
   })
 );
