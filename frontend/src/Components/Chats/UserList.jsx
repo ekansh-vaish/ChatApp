@@ -12,10 +12,9 @@ const User = JSON.parse(localStorage.getItem("User"));
 
 async function fetchUsers() {
 try{
-const response = await axios.get("http://localhost:8080/userchat/userlist",{
+const response = await axios.get("https://aichatapp-edji.onrender.com/userchat/userlist",{
 withCredentials : true,
 })
-console.log(response);
 setUserList(response.data.userList);
 }
 catch(error)

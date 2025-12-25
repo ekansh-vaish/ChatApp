@@ -10,10 +10,12 @@ const dbUrL = process.env.ATLASDB_URL
 const session = require('express-session');
 const {MongoStore} = require("connect-mongo");
 
-app.use(cors(
-  { origin: "http://localhost:5173",credentials:true },
-  
-));
+app.use(
+  cors({
+    origin: "https://aichatapp-roan.vercel.app",
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 app.use(express.json());
 
@@ -45,8 +47,8 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     httpOnly: true,
-    secure : process.env.NODE_ENV === "production",
-    sameSite : "lax",
+ secure: true, 
+     sameSite : "None",
     maxAge: 1000 * 60 * 60 * 24 
   }
 }));

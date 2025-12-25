@@ -29,7 +29,7 @@ userData.append("Password", formData.Password);
 userData.append("image", formData.image);
 
 try {
-await axios.post("http://localhost:8080/auth/register", userData,
+await axios.post("https://aichatapp-edji.onrender.com/auth/register", userData,
 {
 withCredentials:true ,
 headers: {

@@ -7,7 +7,6 @@ function Navigation() {
   const User = JSON.parse(localStorage.getItem("User"));
   const userVal = User?.payload;   
 
-  // 🔎 Check on mount
   useEffect(() => {
     if (!User || !User.payload) {
       navigate("/login");
@@ -16,7 +15,7 @@ function Navigation() {
 
   async function LogoutUser() {
     await axios.post(
-      "http://localhost:8080/auth/logout",
+      "https://aichatapp-edji.onrender.com/auth/logout",
       {},
       { withCredentials: true }
     );

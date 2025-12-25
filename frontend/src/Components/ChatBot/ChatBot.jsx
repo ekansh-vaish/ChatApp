@@ -12,7 +12,7 @@ function ChatBot() {
     e.preventDefault();
 
     const response = await axios.post(
-      "http://localhost:8080/gpt/ask",
+      "https://aichatapp-edji.onrender.com/gpt/ask",
       { prompt: prompt }
     );
 

@@ -1,7 +1,6 @@
 import React from "react";
 import "./PrivacyPolicy.css";
 import Navigation from "../Navigation/Navigation";
-import Footer from "../Footer/Footer";
 
 function PrivacyPolicy() {
 return (

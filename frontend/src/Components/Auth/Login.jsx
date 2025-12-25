@@ -19,7 +19,7 @@ setFormData({ ...formData, [name]: value });
 async function LoginForm(e) {
 e.preventDefault();
 try {
-const response = await axios.post("http://localhost:8080/auth/login", formData,
+const response = await axios.post("https://aichatapp-edji.onrender.com/auth/login", formData,
 {
 withCredentials:true   
 }

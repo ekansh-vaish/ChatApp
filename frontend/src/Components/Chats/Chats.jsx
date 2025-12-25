@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+
 import { useNavigate, useParams } from "react-router-dom";
 
 import "./Chats.css";
@@ -14,15 +13,15 @@ function Chats() {
 const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
 
-const [messageInput, setMessageInput] = useState("");   // input box value
+const [messageInput, setMessageInput] = useState("");   
 const [conversation, setConversation] = useState([]);
-const [editId, setEditId] = useState(null);             // track which message is being edited
+const [editId, setEditId] = useState(null);             
 const { id } = useParams();
 const User = JSON.parse(localStorage.getItem("User"));
 const navigate = useNavigate();
 async function fetchConversation() {
 try {
-const res = await axios.get(`http://localhost:8080/userchat/conversation/${id}`, {
+const res = await axios.get(`https://aichatapp-edji.onrender.com/userchat/conversation/${id}`, {
 withCredentials: true,
 });
 
@@ -42,7 +41,7 @@ try {
 if (editId) {
 
 await axios.put(
-`http://localhost:8080/userchat/updateChat/${editId}`,
+`https://aichatapp-edji.onrender.com/userchat/updateChat/${editId}`,
 { Message: messageInput },
 { withCredentials: true }
 );
@@ -50,7 +49,7 @@ setEditId(null);
 } else {
 // Send new chat
 await axios.post(
-`http://localhost:8080/userchat/message/${id}`,
+`https://aichatapp-edji.onrender.com/userchat/message/${id}`,
 { Message: messageInput },
 { withCredentials: true }
 );
@@ -64,7 +63,7 @@ console.log(error);
 
 async function DeleteChat(upid) {
 try {
-await axios.delete(`http://localhost:8080/userchat/deleteChat/${upid}`, {
+await axios.delete(`https://aichatapp-edji.onrender.com/userchat/deleteChat/${upid}`, {
 withCredentials: true,
 });
 fetchConversation();
